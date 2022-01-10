@@ -13,8 +13,7 @@ from PIL import Image, ImageTk
 
 WIDTH = 900             #WIDTH OF WINDOW
 HEIGHT = 550            #HEIGHT OF WINDOW
-FOLDER_NAME = "CSE 310 - Python Module #1"                  #HERE GOES THE NAME OF THE FOLDER WHERE YOU HAVE ALL THE CODE AND PICTURES
-USERS_FILE = FOLDER_NAME + "/registeredUsers.txt"           #CHANGE TO THE NAME OF THE TEXT FILE YOU WANT TO USE
+USERS_FILE = "registeredUsers.txt"           #CHANGE TO THE NAME OF THE TEXT FILE YOU WANT TO USE
 
 #Regular expression for validating an email
 e_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
@@ -169,8 +168,7 @@ for frame in (login_page, register_page, main_page):
 
 
 #==================Login Page code
-#img = ImageTk.PhotoImage(Image.open("CSE 310 - Python Module #1/background_login_Page.jpg"))
-img = ImageTk.PhotoImage(Image.open(FOLDER_NAME +"/background_login_Page.jpg"))
+img = ImageTk.PhotoImage(Image.open("background_login_Page.jpg"))
 lg_back=tk.Label(login_page, image=img)
 lg_back.place(relheight=1,relwidth=1)
 
@@ -193,7 +191,7 @@ tk.Button(login_page, text="Sign up", font=('Bahnschrift SemiBold', 25), command
 tk.Label(register_page, text="Email", font=('Bahnschrift SemiBold', 25)).place(relx=0.18, rely=0.1, relheight=0.1, relwidth=0.2)
 tk.Label(register_page, text="Username", font=('Bahnschrift SemiBold', 25)).place(relx=0.18, rely=0.3, relheight=0.1, relwidth=0.2)
 tk.Label(register_page, text="Password", font=('Bahnschrift SemiBold', 25)).place(relx=0.18, rely=0.5, relheight=0.1, relwidth=0.2)
-ur_goBack_img = ImageTk.PhotoImage(Image.open("CSE 310 - Python Module #1/Icons/login-rounded--v1.jpg"))
+ur_goBack_img = ImageTk.PhotoImage(Image.open("login-rounded--v1.jpg"))
 ur_goBack_btn = tk.Button(register_page, image=ur_goBack_img, command=lambda:show_frame(login_page), borderwidth=0)
 ur_goBack_btn.place(relx=0.02,rely=0.02)
 
@@ -217,7 +215,7 @@ mp_frame1.place(relx=0.01,rely=0.01, relheight=0.2, relwidth=0.75)
 mp_frame2 = tk.Frame(main_page, bg='orange')
 mp_frame2.place(relx=0.01,rely=0.25,relheight=0.7,relwidth=0.75)
 
-mp_goBack_img = ImageTk.PhotoImage(Image.open(FOLDER_NAME + "/logout-rounded-left--v1.jpg"))
+mp_goBack_img = ImageTk.PhotoImage(Image.open("logout-rounded-left--v1.jpg"))
 mp_goBack_btn = tk.Button(main_page, image=mp_goBack_img, command=lambda:show_frame(login_page), borderwidth=0)
 mp_goBack_btn.place(relx=0.02,rely=0.02)
 
@@ -278,7 +276,7 @@ mp_data4_btn3 = tk.Checkbutton(mp_frame2, text='Orange', variable=data4_3, bg='o
 mp_data4_btn3.place(relx=0.8,rely=0.7)
 
 
-show_frame(main_page)
+show_frame(login_page)
 
 
 
