@@ -39,6 +39,7 @@ class currentUser:
 #Create User
 logged_User = currentUser('0','0','0')
 
+## FUNCTIONS TO BE CALLED ##
 def show_frame(frame):
     frame.tkraise()
 
@@ -147,7 +148,9 @@ def fruitList():
         tuple_Fruit[2] = 'orange'
     else:
         tuple_Fruit[2] = ''
+## (END) FUNCTIONS TO BE CALLED ##
 
+## METHODS FOR TKINTER ##
 window = tk.Tk()
 #window.state('zoomed')
 window.minsize(WIDTH, HEIGHT)
@@ -165,17 +168,23 @@ main_page = tk.Frame(window)
 #This code helps looping through the frames
 for frame in (login_page, register_page, main_page):
     frame.grid(row=0,column=0,sticky='nsew')
+## (END) METHODS FOR TKINTER ##
 
+
+# BELOW is the design of each Page for the UI #
 
 #==================Login Page code
+#BACKGROUND picture
 img = ImageTk.PhotoImage(Image.open("background_login_Page.jpg"))
 lg_back=tk.Label(login_page, image=img)
 lg_back.place(relheight=1,relwidth=1)
 
+#CREATE labels for entry boxes
 tk.Label(login_page, text="Email", font=('Bahnschrift SemiBold', 25)).place(relx=0.18, rely=0.1, relheight=0.1, relwidth=0.2)
 tk.Label(login_page, text="Username", font=('Bahnschrift SemiBold', 25)).place(relx=0.18, rely=0.3, relheight=0.1, relwidth=0.2)
 tk.Label(login_page, text="Password", font=('Bahnschrift SemiBold', 25)).place(relx=0.18, rely=0.5, relheight=0.1, relwidth=0.2)
 
+#CREATE entry boxes (email, username, password)
 ul_email = tk.Entry(login_page, bd=5, font=('Bahnschrift SemiBold', 25))
 ul_email.place(relx=0.38, rely=0.1, relheight=0.1, relwidth=0.4)
 ul_user = tk.Entry(login_page, bd=5, font=('Bahnschrift SemiBold', 25))
@@ -183,18 +192,23 @@ ul_user.place(relx=0.38, rely=0.3, relheight=0.1, relwidth=0.4)
 ul_pass = tk.Entry(login_page, bd=5, font=('Bahnschrift SemiBold', 25), show='*')
 ul_pass.place(relx=0.38, rely=0.5, relheight=0.1, relwidth=0.4)
 
+#CREATE button to manupulate data
 tk.Button(login_page, text="Log in", font=('Bahnschrift SemiBold', 25), command=lambda:login(), bd=6).place(relx=0.42, rely=0.7, relheight=0.11, relwidth=0.12)
 tk.Button(login_page, text="Sign up", font=('Bahnschrift SemiBold', 25), command=lambda:show_frame(register_page), bd=6).place(relx=0.38, rely=0.85, relheight=0.11, relwidth=0.2)
 
 
 #==================Register Page code
+#CREATE labels for extry boxes
 tk.Label(register_page, text="Email", font=('Bahnschrift SemiBold', 25)).place(relx=0.18, rely=0.1, relheight=0.1, relwidth=0.2)
 tk.Label(register_page, text="Username", font=('Bahnschrift SemiBold', 25)).place(relx=0.18, rely=0.3, relheight=0.1, relwidth=0.2)
 tk.Label(register_page, text="Password", font=('Bahnschrift SemiBold', 25)).place(relx=0.18, rely=0.5, relheight=0.1, relwidth=0.2)
+
+#GO BACK button
 ur_goBack_img = ImageTk.PhotoImage(Image.open("login-rounded--v1.jpg"))
 ur_goBack_btn = tk.Button(register_page, image=ur_goBack_img, command=lambda:show_frame(login_page), borderwidth=0)
 ur_goBack_btn.place(relx=0.02,rely=0.02)
 
+#CREATE entry boxes (email, username, password)
 ur_email = tk.Entry(register_page, bd=5, font=('Bahnschrift SemiBold', 25))
 ur_email.place(relx=0.38, rely=0.1, relheight=0.1, relwidth=0.4)
 ur_user = tk.Entry(register_page, bd=5, font=('Bahnschrift SemiBold', 25))
@@ -202,24 +216,23 @@ ur_user.place(relx=0.38, rely=0.3, relheight=0.1, relwidth=0.4)
 ur_pass = tk.Entry(register_page, bd=5, font=('Bahnschrift SemiBold', 25))
 ur_pass.place(relx=0.38, rely=0.5, relheight=0.1, relwidth=0.4)
 
+#CREATE button to manupulate data
 tk.Button(register_page, text="Register", font=('Bahnschrift SemiBold', 25), command=lambda:register(), bd=6).place(relx=0.42, rely=0.7, relheight=0.11, relwidth=0.18)
 
 
 #==================Main Page code
 #CREATE currentUser Object to store further data.
-#mp_frame1 = tk.Frame(main_page, highlightbackground="black", highlightthickness=2).place(relx=0.01,rely=0.01, relheight=0.2, relwidth=0.5)
-#mp_frame2 = tk.Frame(main_page, bg="#f7e98d").place(relx=0.01,rely=0.25, relheight=0.7, relwidth=0.5)
-#mp_frame3 = tk.Frame(main_page, bg="blue").place(relx=0.55,rely=0.01, relheight=0.94, relwidth=0.4)
 mp_frame1 = tk.Frame(main_page, highlightbackground="black", highlightthickness=2)
 mp_frame1.place(relx=0.01,rely=0.01, relheight=0.2, relwidth=0.75)
 mp_frame2 = tk.Frame(main_page, bg='orange')
 mp_frame2.place(relx=0.01,rely=0.25,relheight=0.7,relwidth=0.75)
 
+#GO BACK button
 mp_goBack_img = ImageTk.PhotoImage(Image.open("logout-rounded-left--v1.jpg"))
 mp_goBack_btn = tk.Button(main_page, image=mp_goBack_img, command=lambda:show_frame(login_page), borderwidth=0)
 mp_goBack_btn.place(relx=0.02,rely=0.02)
 
-#Main Label
+#Main label
 mp_updateLabel = tk.Label(mp_frame1,text='no_updated',font=('Bahnschrift SemiBold', 25))
 mp_updateLabel.place(relx=0.15,rely=0.27)
 mp_bt1 = tk.Button(mp_frame1, text="Refresh Data",command=lambda:refreshMainPageData())
@@ -227,8 +240,8 @@ mp_bt1.place(relx=0.8,rely=0.2)
 mp_bt2 = tk.Button(mp_frame1, text="Submit Data",command=lambda:submitMainPageData())
 mp_bt2.place(relx=0.8,rely=0.6)
 
-#Radio Buttons
-#data1 is the selection of favorite pet specie
+## Radio Buttons ##
+#data1 is the selection of favorite pet species
 data1 = tk.StringVar()
 mp_data1_label = tk.Label(mp_frame2,text='Favorite Pet:', font=('Bahnschrift SemiBold', 20), bg='orange')
 mp_data1_label.place(relx=0.1, rely=0.1)
